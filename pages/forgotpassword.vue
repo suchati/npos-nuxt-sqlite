@@ -74,7 +74,7 @@
 <script>
 export default {
   name: 'Forgotpassword',
-  middleware: ['NoAuth'],
+  auth: 'guest',
   data: () => ({
     email: '',
     email_text: '',

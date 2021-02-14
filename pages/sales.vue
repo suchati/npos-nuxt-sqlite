@@ -12,7 +12,8 @@
               <v-app-bar-nav-icon v-bind="attrs" v-on="on" />
             </template>
             <v-list>
-              <v-list-item :to="localePath('/dashboard')">
+              <v-divider />
+              <v-list-item v-if="$auth.user.type" :to="localePath('/dashboard')">
                 <v-list-item-icon>
                   <v-icon>mdi-arrow-left-circle-outline</v-icon>
                 </v-list-item-icon>
@@ -32,6 +33,7 @@
                 </v-list-item-icon>
                 <v-list-item-title>LOGOUT</v-list-item-title>
               </v-list-item>
+              <v-divider />
             </v-list>
           </v-menu>
           <v-divider class="mx-4" vertical />
@@ -660,7 +662,6 @@
 <script>
 export default {
   name: 'Sales',
-  middleware: ['auth'],
   data: () => ({
     listsale: [],
     barcode: '',
@@ -932,9 +933,6 @@ export default {
       } else {
         cancelFullScreen.call(doc)
       }
-    },
-    gotoAdmin () {
-      this.$router.push('/dashboard')
     },
     logout () {
       this.$auth.logout().then(() => this.$router.push(this.localePath('/login')))

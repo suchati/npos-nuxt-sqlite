@@ -47,7 +47,7 @@ export default {
             if (update) {
               return res.json({ success: true })
             } else {
-              return res.json({ success: true })
+              return res.json({ success: false })
             }
           })
         } else {
@@ -61,17 +61,21 @@ export default {
       if (result) {
         return res.json({ success: true, lists: result })
       } else {
-        return res.json({ success: true })
+        return res.json({ success: false })
       }
     })
   },
   listsale_info: (req, res) => {
     const Order = req.params.order
-    Saledetail.findOne(Order, 's_order', '*', (result) => {
+    const sql = `SELECT products.p_name, saledetails.qty, saledetails.sd_price
+                FROM saledetails
+                LEFT JOIN products on products.p_id = sd_product
+                WHERE sd_order = ?`
+    Saledetail.Runsql(sql, [Order], (result) => {
       if (result) {
         return res.json({ success: true, lists: result })
       } else {
-        return res.json({ success: true })
+        return res.json({ success: false })
       }
     })
   },
@@ -156,7 +160,7 @@ export default {
       if (result) {
         return res.json({ success: true, data: result })
       } else {
-        return res.json({ success: true })
+        return res.json({ success: false })
       }
     })
   },
@@ -171,7 +175,7 @@ export default {
       if (result) {
         return res.json({ success: true, data: result })
       } else {
-        return res.json({ success: true })
+        return res.json({ success: false })
       }
     })
   }

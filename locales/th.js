@@ -27,6 +27,7 @@ export default {
   name: 'ชื่อ',
   phone: 'หมายเลขโทรศัพท์',
   address: 'ที่อยู่',
+  welcome: 'ยินดีต้อนรับสู่',
 
   // DASHBOARD
   Dashboard: 'แผงควบคุม',

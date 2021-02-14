@@ -164,7 +164,7 @@
 <script>
 export default {
   name: 'Resetpassword',
-  middleware: ['NoAuth'],
+  auth: 'guest',
   data: () => ({
     code: {
       c1: '',

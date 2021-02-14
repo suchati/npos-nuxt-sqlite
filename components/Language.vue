@@ -1,5 +1,5 @@
 <template>
-  <v-btn-toggle value="$i18n.locale">
+  <v-btn-toggle>
     <v-btn :to="switchLocalePath('en')" small>
       EN
     </v-btn>

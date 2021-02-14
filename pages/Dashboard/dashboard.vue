@@ -207,7 +207,7 @@
 export default {
   name: 'Dashboard',
   layout: 'dashboard',
-  // middleware: ['auth', 'Auth'],
+  middleware: ['Admin'],
   data: () => ({
     load_M_data: false,
     Monthdata: [],

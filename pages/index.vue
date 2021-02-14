@@ -1,15 +1,19 @@
 <template>
   <div>
     <v-app-bar color="transparent" dense flat absolute>
+      <v-btn v-if="!$auth.loggedIn" text outlined :to="localePath('/login')">
+        {{ $t('login') }}
+      </v-btn>
       <v-spacer />
       <v-dialog v-model="cus_dialog" max-width="400">
         <template #activator="{ on, attrs }">
           <v-btn
+            outlined
             text
             v-bind="attrs"
             v-on="on"
           >
-            register
+            {{ $t('register') }}
           </v-btn>
         </template>
         <v-card class="">
@@ -96,7 +100,7 @@
     <v-container>
       <v-row justify="center" class="mt-12 mb-5">
         <div>
-          <h1>Welcome to NPOS</h1>
+          <h1>{{ $t('welcome') }} NPOS</h1>
         </div>
       </v-row>
       <div v-if="showpage">
@@ -267,8 +271,8 @@
                       v-for="size in sizes"
                       :key="size"
                       :value="size"
-                      filter
                       outlined
+                      class="rounded"
                       @click="cashvalue (size)"
                     >
                       {{ size }}
@@ -354,6 +358,7 @@
 <script>
 export default {
   name: 'Index',
+  auth: false,
   data: () => ({
     search: '',
     customers: {},

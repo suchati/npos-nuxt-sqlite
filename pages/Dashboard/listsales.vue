@@ -69,7 +69,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(item,index) in listsale_info" :key="index">
+                <tr v-for="(item, index) in listsale_info" :key="index">
                   <td>{{ index+1 }}</td>
                   <td>{{ item.p_name }}</td>
                   <td>{{ item.qty }}</td>
@@ -98,7 +98,7 @@
 export default {
   name: 'Listsale',
   layout: 'dashboard',
-  middleware: ['auth'],
+  middleware: ['Admin'],
   data: () => ({
     lists: [],
     listsale_info: [],
@@ -113,13 +113,19 @@ export default {
   methods: {
     async Show_list () {
       await this.$axios.$post('/sales/listsales')
-        .then((res) => { this.lists = res.lists })
+        .then((res) => {
+          if (res.success) {
+            this.lists = res.lists
+          }
+        })
     },
     async list_info (item) {
       await this.$axios.$put(`sales/listsale_info/${item.s_order}`).then((res) => {
-        this.listsale_info = res.lists
-        this.Order = item.s_order
-        this.List_dialog = true
+        if (res.success) {
+          this.listsale_info = res.lists
+          this.Order = item.s_order
+          this.List_dialog = true
+        }
       })
     }
   }

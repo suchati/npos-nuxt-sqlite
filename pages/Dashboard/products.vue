@@ -319,7 +319,7 @@ export default {
     barcode: VueBarcode
   },
   layout: 'dashboard',
-  // middleware: ['auth', 'admin'],
+  middleware: ['Admin'],
   data: () => ({
     products: [],
     id: '',

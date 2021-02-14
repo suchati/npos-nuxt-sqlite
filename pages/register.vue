@@ -102,6 +102,8 @@
 
 <script>
 export default {
+  name: 'Register',
+  auth: 'guest',
   data: () => ({
     user: {
       name: '',

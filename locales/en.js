@@ -27,6 +27,7 @@ export default {
   name: 'Name',
   phone: 'Phone number',
   address: 'Address',
+  welcome: 'Welcome to',
 
   // DASHBOARD
   Dashboard: 'Dashboard',

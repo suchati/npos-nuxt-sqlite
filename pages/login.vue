@@ -82,7 +82,7 @@
 <script>
 export default {
   name: 'Login',
-  middleware: ['NoAuth'],
+  auth: 'guest',
   data: () => ({
     username: '',
     password: '',

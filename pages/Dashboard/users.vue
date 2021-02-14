@@ -62,7 +62,7 @@
 export default {
   name: 'User',
   layout: 'dashboard',
-  // middleware: ['auth', 'Auth'],
+  middleware: ['Admin'],
   data: () => ({
     headers: [
       {

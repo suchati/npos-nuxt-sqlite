@@ -9,6 +9,7 @@ import Dashboard from '~/pages/Dashboard/dashboard'
 export default {
   name: 'Home',
   components: { Dashboard },
-  layout: 'dashboard'
+  layout: 'dashboard',
+  middleware: ['Admin']
 }
 </script>
