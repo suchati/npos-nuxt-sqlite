@@ -98,12 +98,10 @@
       <language />
     </v-app-bar>
     <v-container>
-      <v-row justify="center" class="mt-12 mb-5">
-        <div>
+      <div v-if="showpage">
+        <div class="text-center mt-12 mb-5">
           <h1>{{ $t('welcome') }} NPOS</h1>
         </div>
-      </v-row>
-      <div v-if="showpage">
         <v-row justify="center">
           <v-col cols="12" md="5" sm="6">
             <v-form ref="form_customer" @submit.prevent="findcustomer">
